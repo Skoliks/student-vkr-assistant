@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 class DocumentChunk(Base):
     __tablename__ = "document_chunks"
     
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, nullable=False)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     
     document_id: Mapped[int] = mapped_column(
         ForeignKey("documents.id"), 
@@ -23,7 +23,6 @@ class DocumentChunk(Base):
     
     chunk_index: Mapped[int] = mapped_column(
         Integer, 
-        index=True, 
         nullable=False
     )
     chunk_text: Mapped[str] = mapped_column(Text, nullable=False)
