@@ -26,3 +26,9 @@ class DocumentFullRead(BaseModel):
     created_at: datetime
     
     model_config = ConfigDict(from_attributes=True)
+    
+    
+class DocumentIndexResponse(BaseModel):
+    document_id: int
+    status: str
+    chunks_created: int

@@ -11,7 +11,6 @@ class DocumentService:
     async def create_document(self, db: AsyncSession, data: DocumentCreate) -> Document:
         return await self.repository.create(db=db, data=data)
         
-    
     async def get_documents(self, db: AsyncSession) -> list[Document]:
         return await self.repository.get_all(db=db)
     
