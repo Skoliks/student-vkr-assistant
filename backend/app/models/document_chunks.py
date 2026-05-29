@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy import Integer, Text, DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from pgvector.sqlalchemy import Vector
 
 from app.models.base import Base
 
@@ -26,6 +27,8 @@ class DocumentChunk(Base):
         nullable=False
     )
     chunk_text: Mapped[str] = mapped_column(Text, nullable=False)
+    
+    embeding: Mapped[list[float] | None] = mapped_column(Vector(384), nullable=True)
     
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), 
